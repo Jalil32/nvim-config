@@ -2,7 +2,7 @@
   description = "Jalil's Neovim Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -14,7 +14,7 @@
         # Define the custom Neovim package
         customNeovim = pkgs.neovim.override {
           configure = {
-            customRC = pkgs.lib.readFile ./nvim/set.lua;
+            initLua = pkgs.lib.readFile ./nvim/set.lua;
             packages.myPlugins = with pkgs.vimPlugins; {
               start = [
                 plenary-nvim
